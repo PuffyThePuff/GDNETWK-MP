@@ -28,7 +28,7 @@ public class GameLogic : MonoBehaviour
     }
 
     public GameObject LocalPlayerPrefab => localPlayerPrefab;
-    public GameObject PlayerPrefab => PlayerPrefab;
+    public GameObject PlayerPrefab => playerPrefab;
 
     [Header("Prefabs")]
     [SerializeField] private GameObject localPlayerPrefab;
