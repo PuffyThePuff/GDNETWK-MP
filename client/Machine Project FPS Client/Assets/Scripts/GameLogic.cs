@@ -29,10 +29,12 @@ public class GameLogic : MonoBehaviour
 
     public GameObject LocalPlayerPrefab => localPlayerPrefab;
     public GameObject PlayerPrefab => playerPrefab;
+    public GameObject BallPrefab => ballPrefab;
 
     [Header("Prefabs")]
     [SerializeField] private GameObject localPlayerPrefab;
     [SerializeField] private GameObject playerPrefab;
+    [SerializeField] private GameObject ballPrefab;
 
     private void Awake()
     {
