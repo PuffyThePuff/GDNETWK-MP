@@ -41,7 +41,7 @@ public class CameraController : MonoBehaviour
         float mouseVertical = Input.GetAxis("Mouse Y");
         float mouseHorizontal = Input.GetAxis("Mouse X");
 
-        verticalRotation += mouseVertical * sensitivity * Time.deltaTime;
+        verticalRotation += -mouseVertical * sensitivity * Time.deltaTime;
         horizontalRotation += mouseHorizontal * sensitivity *Time.deltaTime;
 
         verticalRotation = Mathf.Clamp(verticalRotation, -clampAngle, clampAngle);

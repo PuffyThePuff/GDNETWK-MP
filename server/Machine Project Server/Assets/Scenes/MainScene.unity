@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   port: 7777
-  maxClientCount: 2
+  maxClientCount: 10
 --- !u!4 &1167619351
 Transform:
   m_ObjectHideFlags: 0
