@@ -33,8 +33,8 @@ public class Player : MonoBehaviour
         player.ID = id;
         player.Username = string.IsNullOrEmpty(username) ? $"Guest {id}" : username;
 
-        //team odd or even
-        player.Team = (ushort)(list.Count % 2);
+        // Team One or Team Two
+        player.Team = (ushort)((list.Count % 2) + 1);
 
         player.SendSpawned();
         list.Add(id, player);

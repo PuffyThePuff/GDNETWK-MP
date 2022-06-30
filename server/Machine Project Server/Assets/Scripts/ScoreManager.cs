@@ -16,20 +16,22 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    public int playerOneScore = 0;
-    public int playerTwoScore = 0;
+    // public int playerOneScore = 0;
+    // public int playerTwoScore = 0;
 
     public void UpdateScore(bool isPlayerOne)
     {
-        if (isPlayerOne) playerOneScore += 1;
-        else playerTwoScore += 1;
+        // if (isPlayerOne) playerOneScore += 1;
+        // else playerTwoScore += 1;
 
-        SendScore();
+        SendScore(isPlayerOne);
     }
 
-    // Message Sending function
-    private void SendScore()
+    private void SendScore(bool isPlayerOne)
     {
-        
+        Message message = Message.Create(MessageSendMode.reliable, ServerToClientID.goalScored);
+        message.AddBool(isPlayerOne);
+
+        NetworkManager.Singleton.Server.SendToAll(message);
     }
 }

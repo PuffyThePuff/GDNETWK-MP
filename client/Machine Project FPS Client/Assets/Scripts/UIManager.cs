@@ -36,10 +36,16 @@ public class UIManager : MonoBehaviour
     [Header("HUD")]
     [SerializeField] private GameObject headsUpDisplay;
     [SerializeField] private GameObject goalText;
-    [SerializeField] private Text playerOneScore;
-    [SerializeField] private Text playerTwoScore;
-    [SerializeField] private Text playerOneName;
-    [SerializeField] private Text playerTwoName;
+    [SerializeField] private Text playerOneScoreText;
+    [SerializeField] private Text playerTwoScoreText;
+    [SerializeField] private Text playerOneNameText;
+    [SerializeField] private Text playerTwoNameText;
+
+    private int playerOneScore = 0;
+    private int playerTwoScore = 0;
+
+    private float textTimer = 2.0f;
+    private bool goalTextIsActive = false;
 
     private void Awake()
     {
@@ -51,6 +57,7 @@ public class UIManager : MonoBehaviour
         //hides the UI after clicking the connect button
         usernameField.interactable = false;
         connectUI.SetActive(false);
+        headsUpDisplay.SetActive(true);
 
         NetworkManager.Singleton.Connect();
     }
@@ -58,6 +65,7 @@ public class UIManager : MonoBehaviour
     public void BackToMain()
     {
         //shows the UI after connection error
+        headsUpDisplay.SetActive(false);
         usernameField.interactable = true;
         connectUI.SetActive(true);
     }
@@ -70,19 +78,49 @@ public class UIManager : MonoBehaviour
         NetworkManager.Singleton.Client.Send(message);
     }
 
-    // Still needs to communicate with the server for the player names
-    public void InitializeHUD()
+    public void DisplayPlayerNames()
     {
-        headsUpDisplay.SetActive(true);
+        foreach(Player player in Player.list.Values)
+        {
+            if (player.Team == 1) playerOneNameText.text = player.GetUsername();
+            else playerTwoNameText.text = player.GetUsername();
+        }
     }
 
-    public void ActivateGoalText()
+    private void ActivateGoalText()
     {
-
+        goalText.SetActive(true);
+        goalTextIsActive = true;
     }
 
-    public void UpdateScore()
+    private void Update()
     {
+        if (goalTextIsActive)
+        {
+            textTimer -= Time.deltaTime;
+            if (textTimer <= 0.0f)
+            {
+                textTimer = 2.0f;
+                goalTextIsActive = false;
+                goalText.SetActive(false);
+            }
+        }
+    }
 
+    [MessageHandler((ushort)ServerToClientID.goalScored)]
+    private static void ChangeScore(Message message)
+    {
+        if (message.GetBool())
+        {
+            Singleton.playerOneScore++;
+            Singleton.playerOneScoreText.text = Singleton.playerOneScore.ToString();
+        }
+        else
+        {
+            Singleton.playerTwoScore++;
+            Singleton.playerTwoScoreText.text = Singleton.playerTwoScore.ToString();
+        }
+
+        Singleton.ActivateGoalText();
     }
 }
