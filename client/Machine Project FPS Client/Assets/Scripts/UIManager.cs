@@ -33,6 +33,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject connectUI;
     [SerializeField] private InputField usernameField;
 
+    [Header("HUD")]
+    [SerializeField] private GameObject headsUpDisplay;
+    [SerializeField] private GameObject goalText;
+    [SerializeField] private Text playerOneScore;
+    [SerializeField] private Text playerTwoScore;
+    [SerializeField] private Text playerOneName;
+    [SerializeField] private Text playerTwoName;
+
     private void Awake()
     {
         Singleton = this;
@@ -60,5 +68,21 @@ public class UIManager : MonoBehaviour
         Message message = Message.Create(MessageSendMode.reliable, ClientToServerID.name);
         message.AddString(usernameField.text);
         NetworkManager.Singleton.Client.Send(message);
+    }
+
+    // Still needs to communicate with the server for the player names
+    public void InitializeHUD()
+    {
+        headsUpDisplay.SetActive(true);
+    }
+
+    public void ActivateGoalText()
+    {
+
+    }
+
+    public void UpdateScore()
+    {
+
     }
 }

@@ -10,6 +10,7 @@ public class GoalCollision : MonoBehaviour
     {
         if (other.tag == "Ball")
         {
+            ScoreManager.Singleton.UpdateScore(isPlayerOneGoal);
         }
     }
 }
