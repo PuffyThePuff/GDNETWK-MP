@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 779687872396331054}
   - component: {fileID: 2217669039575644599}
   - component: {fileID: 9191443362632657581}
+  - component: {fileID: 8103242032733330059}
   m_Layer: 0
   m_Name: Goal1
   m_TagString: Goal
@@ -95,6 +96,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8103242032733330059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 219320443057305657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56ae805fb0e192f40b0532a40ecaae8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerOneGoal: 1
 --- !u!1 &454783382177457455
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,6 +311,7 @@ GameObject:
   - component: {fileID: 8831427045984910154}
   - component: {fileID: 2261082044964312356}
   - component: {fileID: 7229709158049390215}
+  - component: {fileID: 2571854796360077624}
   m_Layer: 0
   m_Name: Goal2
   m_TagString: Goal
@@ -380,6 +395,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2571854796360077624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282132386190428947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56ae805fb0e192f40b0532a40ecaae8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerOneGoal: 0
 --- !u!1 &3045940897410076354
 GameObject:
   m_ObjectHideFlags: 0

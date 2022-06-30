@@ -53,8 +53,8 @@ public class Player : MonoBehaviour
         player.ID = id;
         player.username = username;
 
-        //team odd or even
-        player.Team = (ushort)(list.Count % 2);
+        //Team One or Team Two
+        player.Team = (ushort)((list.Count % 2) + 1);
 
         list.Add(id, player);
     }
@@ -64,6 +64,7 @@ public class Player : MonoBehaviour
     private static void SpawnPlayer(Message message)
     {
         Spawn(message.GetUShort(), message.GetString(), message.GetVector3());
+        UIManager.Singleton.DisplayPlayerNames();
     }
 
     [MessageHandler((ushort)ServerToClientID.playerMovement)]
@@ -71,5 +72,10 @@ public class Player : MonoBehaviour
     {
         if (list.TryGetValue(message.GetUShort(), out Player player))
             player.Move(message.GetVector3(), message.GetVector3());
+    }
+
+    public string GetUsername()
+    {
+        return username;
     }
 }
