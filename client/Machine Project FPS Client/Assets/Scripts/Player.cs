@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
 
     public ushort ID{get; private set;}
     public bool IsLocal{get; private set;}
+    public ushort Team{get; private set;}
 
     [SerializeField] private PlayerAnimationManager animationManager;
     [SerializeField] private Transform camTransform;
@@ -51,6 +52,9 @@ public class Player : MonoBehaviour
         player.name = $"Player {id} ({(string.IsNullOrEmpty(username) ? "Guest" : username)})";
         player.ID = id;
         player.username = username;
+
+        //team odd or even
+        player.Team = (ushort)(list.Count % 2);
 
         list.Add(id, player);
     }

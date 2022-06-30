@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public static Dictionary<ushort, Player> list = new Dictionary<ushort, Player>();
     public ushort ID{get; private set;}
     public string Username{get; private set;}
+    public ushort Team{get; private set;}
 
     public PlayerMovement Movement => movement;
     [SerializeField] private PlayerMovement movement;
@@ -31,6 +32,9 @@ public class Player : MonoBehaviour
         player.name = $"Player {id} ({(string.IsNullOrEmpty(username) ? "Guest" : username)})";
         player.ID = id;
         player.Username = string.IsNullOrEmpty(username) ? $"Guest {id}" : username;
+
+        //team odd or even
+        player.Team = (ushort)(list.Count % 2);
 
         player.SendSpawned();
         list.Add(id, player);
