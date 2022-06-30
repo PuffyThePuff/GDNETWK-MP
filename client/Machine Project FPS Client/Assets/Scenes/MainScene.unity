@@ -381,6 +381,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connectUI: {fileID: 1510722218}
   usernameField: {fileID: 1373881810}
+  headsUpDisplay: {fileID: 1211338488}
+  goalText: {fileID: 1522283630}
+  playerOneScore: {fileID: 1532316451}
+  playerTwoScore: {fileID: 511548846}
+  playerOneName: {fileID: 2035664389}
+  playerTwoName: {fileID: 461475021}
 --- !u!114 &405698565
 MonoBehaviour:
   m_ObjectHideFlags: 0
