@@ -87,6 +87,17 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void ResetUI()
+    {
+        playerOneNameText.text = "Player 1";
+        playerTwoNameText.text = "Player 2";
+
+        playerOneScore = 0;
+        playerOneScoreText.text = playerOneScore.ToString();
+        playerTwoScore = 0;
+        playerTwoScoreText.text = playerTwoScore.ToString();
+    }
+
     private void ActivateGoalText()
     {
         goalText.SetActive(true);

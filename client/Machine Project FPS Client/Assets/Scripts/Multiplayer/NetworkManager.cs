@@ -101,6 +101,8 @@ public class NetworkManager : MonoBehaviour
     {
         if (Player.list.TryGetValue(e.Id, out Player player))
             Destroy(player.gameObject);
+
+        UIManager.Singleton.ResetUI();
     }
     
     private void DidDisconnect(object sender, EventArgs e)
