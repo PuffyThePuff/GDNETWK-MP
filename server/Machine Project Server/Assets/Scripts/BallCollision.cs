@@ -19,6 +19,7 @@ public class BallCollision : MonoBehaviour
             if (respawnTimer <= 0.0f)
             {
                 this.gameObject.transform.position = fieldCenter.position;
+                this.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
                 isRespawning = false;
             }
         }

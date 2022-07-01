@@ -8,7 +8,9 @@ public enum ServerToClientID : ushort
     playerSpawned = 1,
     playerMovement,
     ballMovement,
-    goalScored
+    timerTicked,
+    goalScored,
+    gameEnded
 }
 
 public enum ClientToServerID : ushort
@@ -107,6 +109,7 @@ public class NetworkManager : MonoBehaviour
     
     private void DidDisconnect(object sender, EventArgs e)
     {
+        UIManager.Singleton.ResetUI();
         UIManager.Singleton.BackToMain();
     }
 }
