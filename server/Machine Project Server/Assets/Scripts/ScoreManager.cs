@@ -18,7 +18,7 @@ public class ScoreManager : MonoBehaviour
 
     public void UpdateScore(bool isPlayerOne)
     {
-        SendScore(isPlayerOne);
+        if(TimerManager.Singleton.activeGame) SendScore(isPlayerOne);
     }
 
     private void SendScore(bool isPlayerOne)

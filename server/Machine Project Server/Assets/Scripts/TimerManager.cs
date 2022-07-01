@@ -17,7 +17,7 @@ public class TimerManager : MonoBehaviour
     }
 
     [SerializeField] private float gameTimer = 90.0f;
-    private bool activeGame = false;
+    public bool activeGame = false;
 
     private float shuttingDownTimer = 5.0f;
     private bool isShuttingDown = false;
