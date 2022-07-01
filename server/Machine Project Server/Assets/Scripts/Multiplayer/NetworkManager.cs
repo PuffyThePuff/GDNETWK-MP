@@ -83,5 +83,8 @@ public class NetworkManager : MonoBehaviour
     {
         if (Player.list.TryGetValue(e.Id, out Player player))
             Destroy(player.gameObject);
+
+        // if (Application.isEditor) UnityEditor.EditorApplication.ExitPlaymode();
+        Application.Quit();
     }
 }
