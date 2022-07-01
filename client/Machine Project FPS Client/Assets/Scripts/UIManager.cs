@@ -1,4 +1,5 @@
 using RiptideNetworking;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,6 +37,9 @@ public class UIManager : MonoBehaviour
     [Header("HUD")]
     [SerializeField] private GameObject headsUpDisplay;
     [SerializeField] private GameObject goalText;
+
+    [SerializeField] private Text resultText;
+    [SerializeField] private Text timerText;
     [SerializeField] private Text playerOneScoreText;
     [SerializeField] private Text playerTwoScoreText;
     [SerializeField] private Text playerOneNameText;
@@ -87,6 +91,21 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void ResetUI()
+    {
+        goalText.SetActive(false);
+        resultText.gameObject.SetActive(false);
+
+        playerOneNameText.text = "Player 1";
+        playerTwoNameText.text = "Player 2";
+
+        timerText.text = "0";
+        playerOneScore = 0;
+        playerOneScoreText.text = playerOneScore.ToString();
+        playerTwoScore = 0;
+        playerTwoScoreText.text = playerTwoScore.ToString();
+    }
+
     private void ActivateGoalText()
     {
         goalText.SetActive(true);
@@ -122,5 +141,31 @@ public class UIManager : MonoBehaviour
         }
 
         Singleton.ActivateGoalText();
+    }
+
+    [MessageHandler((ushort)ServerToClientID.timerTicked)]
+    private static void UpdateTimer(Message message)
+    {
+        Singleton.timerText.text = Math.Floor(message.GetFloat()).ToString();
+    }
+
+    [MessageHandler((ushort)ServerToClientID.gameEnded)]
+    private static void ShowResults(Message message)
+    {
+        Singleton.timerText.text = "0";
+        Singleton.resultText.gameObject.SetActive(true);
+
+        if (Singleton.playerOneScore == Singleton.playerTwoScore) Singleton.resultText.text = "DRAW!";
+
+        else if (Singleton.playerOneScore > Singleton.playerTwoScore)
+        {
+            Singleton.resultText.text = "BLUE WINS!";
+            Singleton.resultText.color = new Color(0.16f, 0.36f, 0.71f, 1.0f);
+        }
+        else
+        {
+            Singleton.resultText.text = "RED WINS!";
+            Singleton.resultText.color = new Color(0.93f, 0.29f, 0.29f, 1.0f);
+        }
     }
 }

@@ -7,7 +7,9 @@ public enum ServerToClientID : ushort
     playerSpawned = 1,
     playerMovement,
     ballMovement,
-    goalScored
+    timerTicked,
+    goalScored,
+    gameEnded
 }
 
 public enum ClientToServerID : ushort
@@ -83,5 +85,8 @@ public class NetworkManager : MonoBehaviour
     {
         if (Player.list.TryGetValue(e.Id, out Player player))
             Destroy(player.gameObject);
+
+        if (Application.isEditor) UnityEditor.EditorApplication.ExitPlaymode();
+        Application.Quit();
     }
 }
