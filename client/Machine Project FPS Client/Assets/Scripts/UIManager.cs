@@ -66,6 +66,11 @@ public class UIManager : MonoBehaviour
         NetworkManager.Singleton.Connect();
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
     public void BackToMain()
     {
         //shows the UI after connection error
