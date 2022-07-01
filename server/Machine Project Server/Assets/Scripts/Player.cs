@@ -38,6 +38,8 @@ public class Player : MonoBehaviour
 
         player.SendSpawned();
         list.Add(id, player);
+
+        if (list.Count == 2) TimerManager.Singleton.StartGame();
     }
 
     //creates reliable message with ID, username, and postion of newly connected player and sends to all connected players
