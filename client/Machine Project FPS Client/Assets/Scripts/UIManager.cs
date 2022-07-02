@@ -33,6 +33,7 @@ public class UIManager : MonoBehaviour
     [Header("Connect")]
     [SerializeField] private GameObject connectUI;
     [SerializeField] private InputField usernameField;
+    [SerializeField] private InputField ipField;
 
     [Header("HUD")]
     [SerializeField] private GameObject headsUpDisplay;
@@ -63,7 +64,7 @@ public class UIManager : MonoBehaviour
         connectUI.SetActive(false);
         headsUpDisplay.SetActive(true);
 
-        NetworkManager.Singleton.Connect();
+        NetworkManager.Singleton.Connect(ipField.text);
     }
 
     public void QuitGame()

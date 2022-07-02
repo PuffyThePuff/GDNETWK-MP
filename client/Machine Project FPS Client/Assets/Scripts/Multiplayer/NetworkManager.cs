@@ -50,7 +50,6 @@ public class NetworkManager : MonoBehaviour
         private set;
     }
 
-    [SerializeField] private string ip;
     [SerializeField] private ushort port;
 
     private void Awake()
@@ -82,7 +81,7 @@ public class NetworkManager : MonoBehaviour
     }
 
     //attempts connection
-    public void Connect()
+    public void Connect(string ip)
     {
         Client.Connect($"{ip}:{port}");
     }
