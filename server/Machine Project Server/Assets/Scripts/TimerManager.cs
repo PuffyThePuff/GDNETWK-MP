@@ -43,7 +43,7 @@ public class TimerManager : MonoBehaviour
             shuttingDownTimer -= Time.deltaTime;
             if (shuttingDownTimer <= 0.0f)
             {
-                if (Application.isEditor) UnityEditor.EditorApplication.ExitPlaymode();
+                // if (Application.isEditor) UnityEditor.EditorApplication.ExitPlaymode();
                 Application.Quit();
             }
         }

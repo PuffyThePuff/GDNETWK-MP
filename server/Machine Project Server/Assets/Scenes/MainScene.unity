@@ -148,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 893710189271576778, guid: 968647ebae6e347489a38b787209baee, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 893710189271576778, guid: 968647ebae6e347489a38b787209baee, type: 3}
       propertyPath: m_LocalPosition.z
@@ -190,6 +190,10 @@ PrefabInstance:
       propertyPath: tempSpawnPoint
       value: 
       objectReference: {fileID: 513200042}
+    - target: {fileID: 7272719127016209300, guid: 968647ebae6e347489a38b787209baee, type: 3}
+      propertyPath: m_Mass
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 8353672637948892888, guid: 968647ebae6e347489a38b787209baee, type: 3}
       propertyPath: m_Name
       value: Ball
@@ -346,7 +350,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ff433acac0b5fb4095c960900595898, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameTimer: 30
+  gameTimer: 90
+  activeGame: 0
 --- !u!1001 &1407740405181486119
 PrefabInstance:
   m_ObjectHideFlags: 0
